@@ -851,7 +851,7 @@ function launch({ path = null } = {}) {
       label: '?',
       items: () => [{
         label: 'À propos d\'Éditeur++', icon: '🦎',
-        action: () => alertDialog('Éditeur++ 1.0 — éditeur de texte et de code de WinWeb.\n\nRaccourcis : Ctrl+D dupliquer, Ctrl+L supprimer la ligne, Ctrl+Q commenter, Ctrl+Maj+↑/↓ déplacer, Ctrl+G atteindre, Ctrl+F/H rechercher/remplacer, Ctrl+molette zoom, Inser refrappe.', { title: 'À propos', icon: '🦎' }),
+        action: () => alertDialog('Éditeur++ 1.0 — éditeur de texte et de code de WinGate.\n\nRaccourcis : Ctrl+D dupliquer, Ctrl+L supprimer la ligne, Ctrl+Q commenter, Ctrl+Maj+↑/↓ déplacer, Ctrl+G atteindre, Ctrl+F/H rechercher/remplacer, Ctrl+molette zoom, Inser refrappe.', { title: 'À propos', icon: '🦎' }),
       }],
     },
   ]);

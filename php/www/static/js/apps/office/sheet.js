@@ -397,6 +397,15 @@ function launch({ path = null } = {}) {
   const tabsBar = h('div', { class: 'ss-tabs' });
   const statusInfo = h('span', { class: 'ss-status-info' });
 
+  // Largeur explicite = somme des colonnes : sans elle, « table-layout: fixed »
+  // est ignoré et le navigateur écrase les colonnes pour tenir dans la fenêtre
+  // (illisible sur téléphone : 26 colonnes dans 390 px).
+  function syncTableWidth() {
+    let total = 0;
+    for (const col of colgroup.children) total += parseFloat(col.style.width) || 0;
+    table.style.width = `${total}px`;
+  }
+
   function buildGrid() {
     const s = sheet();
     colgroup.replaceChildren(h('col', { style: { width: '46px' } }),
@@ -420,6 +429,7 @@ function launch({ path = null } = {}) {
       body.append(tr);
     }
     table.replaceChildren(colgroup, h('thead', {}, headRow), body);
+    syncTableWidth();
     sel.r = Math.min(sel.r, s.rows - 1);
     sel.c = Math.min(sel.c, s.cols - 1);
     sel.ar = Math.min(sel.ar, s.rows - 1);
@@ -664,7 +674,7 @@ function launch({ path = null } = {}) {
     const startX = e.clientX;
     const start = sheet().colW[c] || DEF_W;
     const col = colgroup.children[c + 1];
-    const move = (ev) => { col.style.width = `${Math.max(24, start + ev.clientX - startX)}px`; };
+    const move = (ev) => { col.style.width = `${Math.max(24, start + ev.clientX - startX)}px`; syncTableWidth(); };
     const up = (ev) => {
       window.removeEventListener('mousemove', move);
       window.removeEventListener('mouseup', up);

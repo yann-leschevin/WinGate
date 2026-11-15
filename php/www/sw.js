@@ -1,4 +1,4 @@
-// Service worker de WinWeb (version en ligne).
+// Service worker de WinGate (version en ligne).
 // Sert les adresses « vfs/<chemin> » et « wapp/<id>/<fichier> » à partir des
 // fichiers stockés dans le navigateur (IndexedDB), pour la page principale :
 // images, fonds d'écran, téléchargements, images des documents...
@@ -15,7 +15,7 @@ const MIME = {
   csv: 'text/csv; charset=utf-8', xml: 'application/xml', woff: 'font/woff', woff2: 'font/woff2',
 };
 // Contenu utilisateur : même s'il est ouvert seul dans un onglet, il reste
-// dans une origine opaque, sans accès à WinWeb (comme la version Python).
+// dans une origine opaque, sans accès à WinGate (comme la version Python).
 const SANDBOX_CSP = 'sandbox allow-scripts';
 
 self.addEventListener('install', () => self.skipWaiting());

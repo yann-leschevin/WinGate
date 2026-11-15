@@ -19,9 +19,9 @@ function render(info, path) {
         h('div', { class: 'pe-sub', text: `${toWinPath(path)} · ${formatSize(info.file_size)}` }))),
     h('div', { class: 'pe-warning' },
       h('strong', { text: 'Exécution native non disponible. ' }),
-      'Un navigateur ne peut pas exécuter de programme Windows natif, et WinWeb ne lance jamais un fichier .exe '
+      'Un navigateur ne peut pas exécuter de programme Windows natif, et WinGate ne lance jamais un fichier .exe '
       + '(ni dans le navigateur, ni sur le serveur). Seuls les en-têtes du fichier sont lus et décodés ci-dessous. '
-      + 'Pour une application exécutable dans WinWeb, utilisez le format .wapp, une page .html ou un script .js.'),
+      + 'Pour une application exécutable dans WinGate, utilisez le format .wapp, une page .html ou un script .js.'),
   ];
   if (!info.valid) {
     parts.push(h('div', { class: 'pe-error', text: `Analyse impossible : ${info.error}` }));

@@ -1,7 +1,7 @@
 // Navigateur web : onglets, barre d'adresse/recherche, historique, favoris,
 // page d'accueil, zoom, téléchargements vers le VFS.
 // Les sites sont affichés via le mandataire du serveur (/web?url=...) dans une
-// iframe sandbox SANS allow-same-origin (origine opaque : aucun accès à WinWeb).
+// iframe sandbox SANS allow-same-origin (origine opaque : aucun accès à WinGate).
 // Le mode « Direct » charge le site tel quel (beaucoup de sites le refusent).
 import { api } from '../api.js';
 import { fsChanged } from '../bus.js';
@@ -161,7 +161,7 @@ function launch({ url = null, path = null } = {}) {
     reload.title = tab.loading ? 'Arrêter' : 'Actualiser (F5)';
     const isWeb = /^https?:/.test(tab.url);
     lock.textContent = tab.url.startsWith('https:') ? '🔒' : isWeb ? 'ⓘ' : tab.url.startsWith('file:') ? '📄' : '🔍';
-    lock.title = tab.url.startsWith('https:') ? 'Connexion sécurisée (via le serveur WinWeb)' : '';
+    lock.title = tab.url.startsWith('https:') ? 'Connexion sécurisée (via le serveur WinGate)' : '';
     const marked = store.bookmarks.some((b) => b.url === tab.url);
     star.textContent = marked ? '★' : '☆';
     star.classList.toggle('on', marked);
@@ -169,7 +169,7 @@ function launch({ url = null, path = null } = {}) {
     modeBtn.textContent = tab.direct ? '⚡ Direct' : '🛡️ Protégé';
     modeBtn.title = tab.direct
       ? 'Mode direct : le site est chargé tel quel (souvent refusé par les sites). Cliquez pour repasser par le serveur.'
-      : 'Mode protégé : page récupérée par le serveur WinWeb et isolée (bac à sable). Cliquez pour le mode direct.';
+      : 'Mode protégé : page récupérée par le serveur WinGate et isolée (bac à sable). Cliquez pour le mode direct.';
     win.setTitle(`${tab.title || 'Nouvel onglet'} - Navigateur`);
     renderBookmarkBar();
   }
@@ -219,7 +219,7 @@ function launch({ url = null, path = null } = {}) {
       }
     }
     if (tab.direct) {
-      // Origine externe : allow-same-origin est sans risque pour WinWeb (autre origine).
+      // Origine externe : allow-same-origin est sans risque pour WinGate (autre origine).
       frameFor(tab, url, 'allow-scripts allow-forms allow-same-origin allow-popups');
     } else {
       frameFor(tab, `/web?url=${encodeURIComponent(url)}`, 'allow-scripts allow-forms');
@@ -322,12 +322,12 @@ function launch({ url = null, path = null } = {}) {
     setTimeout(() => { if (tab === active) input.focus(); }, 50);
     return h('div', { class: 'br-home' },
       h('div', { class: 'br-home-logo', text: '🌐' }),
-      h('h1', { text: 'Navigateur WinWeb' }),
+      h('h1', { text: 'Navigateur WinGate' }),
       input,
       h('div', { class: 'br-tiles' }, store.bookmarks.slice(0, 12).map((b) => h('button', {
         class: 'br-tile', type: 'button', title: b.url, onclick: () => navigate(tab, b.url),
       }, h('span', { class: 'br-tile-ico', text: (b.title || hostOf(b.url))[0].toUpperCase() }), h('span', { class: 'br-tile-name', text: b.title || hostOf(b.url) })))),
-      h('p', { class: 'br-home-note', text: 'Les pages sont récupérées par le serveur WinWeb et affichées dans un bac à sable. Les sites très dynamiques (connexion, applications web) peuvent mal s\'afficher : essayez alors le mode Direct ou ouvrez-les dans le navigateur de l\'ordinateur.' }),
+      h('p', { class: 'br-home-note', text: 'Les pages sont récupérées par le serveur WinGate et affichées dans un bac à sable. Les sites très dynamiques (connexion, applications web) peuvent mal s\'afficher : essayez alors le mode Direct ou ouvrez-les dans le navigateur de l\'ordinateur.' }),
       h('div', { class: 'br-home-links' },
         h('button', { class: 'btn flat', type: 'button', text: '🕘 Historique', onclick: () => navigate(tab, 'about:historique') }),
         h('button', { class: 'btn flat', type: 'button', text: '⭐ Favoris', onclick: () => navigate(tab, 'about:favoris') }),

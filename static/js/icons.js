@@ -1,9 +1,26 @@
 // Icônes : SVG inline (dossiers, logo, fichiers) et emoji. Aucune ressource externe.
 import { escapeHtml } from './utils.js';
 
-export const LOGO_SVG = `<svg viewBox="0 0 24 24" class="logo-svg" aria-hidden="true">
-  <rect x="2" y="2" width="9.5" height="9.5" rx="1"/><rect x="12.5" y="2" width="9.5" height="9.5" rx="1"/>
-  <rect x="2" y="12.5" width="9.5" height="9.5" rx="1"/><rect x="12.5" y="12.5" width="9.5" height="9.5" rx="1"/></svg>`;
+// Logo WinGate : un anneau de métal qui tourne autour d'un « passage » lumineux
+// (dessin original ; l'animation est dans taskbar.css, classes gate-ring / gate-waves).
+export const LOGO_SVG = `<svg viewBox="0 0 48 48" class="logo-svg gate-logo" aria-hidden="true">
+  <defs>
+    <linearGradient id="lgm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f7fa"/><stop offset=".35" stop-color="#8d99a8"/><stop offset=".6" stop-color="#dfe5ec"/><stop offset="1" stop-color="#56616f"/></linearGradient>
+    <linearGradient id="lgr" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9d1da"/><stop offset=".5" stop-color="#6b7684"/><stop offset="1" stop-color="#aeb8c4"/></linearGradient>
+    <radialGradient id="lgw" cx=".42" cy=".38" r=".75"><stop offset="0" stop-color="#eaf8ff"/><stop offset=".3" stop-color="#6fc3ff"/><stop offset=".7" stop-color="#1668e3"/><stop offset="1" stop-color="#062a7a"/></radialGradient>
+  </defs>
+  <circle cx="24" cy="24" r="22.6" fill="url(#lgm)" stroke="#2c343f" stroke-width=".8"/>
+  <g class="gate-ring">
+    <circle cx="24" cy="24" r="16.1" fill="none" stroke="url(#lgr)" stroke-width="4.8"/>
+    <g stroke="#2c343f" stroke-width=".9" stroke-linecap="round" opacity=".75"><path d="M24 5.6v4.6" transform="rotate(0 24 24)"/><path d="M24 5.6v4.6" transform="rotate(20 24 24)"/><path d="M24 5.6v4.6" transform="rotate(40 24 24)"/><path d="M24 5.6v4.6" transform="rotate(60 24 24)"/><path d="M24 5.6v4.6" transform="rotate(80 24 24)"/><path d="M24 5.6v4.6" transform="rotate(100 24 24)"/><path d="M24 5.6v4.6" transform="rotate(120 24 24)"/><path d="M24 5.6v4.6" transform="rotate(140 24 24)"/><path d="M24 5.6v4.6" transform="rotate(160 24 24)"/><path d="M24 5.6v4.6" transform="rotate(180 24 24)"/><path d="M24 5.6v4.6" transform="rotate(200 24 24)"/><path d="M24 5.6v4.6" transform="rotate(220 24 24)"/><path d="M24 5.6v4.6" transform="rotate(240 24 24)"/><path d="M24 5.6v4.6" transform="rotate(260 24 24)"/><path d="M24 5.6v4.6" transform="rotate(280 24 24)"/><path d="M24 5.6v4.6" transform="rotate(300 24 24)"/><path d="M24 5.6v4.6" transform="rotate(320 24 24)"/><path d="M24 5.6v4.6" transform="rotate(340 24 24)"/></g>
+    <g fill="#eaf8ff"><circle cx="24" cy="7.9" r="1.15" transform="rotate(10 24 24)"/><circle cx="24" cy="7.9" r="1.15" transform="rotate(130 24 24)"/><circle cx="24" cy="7.9" r="1.15" transform="rotate(250 24 24)"/></g>
+  </g>
+  <g transform="rotate(0 24 24)"><path d="M21.3 .9h5.4l-1.2 4.3h-3z" fill="#39424e"/><path d="M22.9 1.7h2.2l-.5 2h-1.2z" fill="#ffb347"/></g><g transform="rotate(60 24 24)"><path d="M21.3 .9h5.4l-1.2 4.3h-3z" fill="#39424e"/><path d="M22.9 1.7h2.2l-.5 2h-1.2z" fill="#ffb347"/></g><g transform="rotate(120 24 24)"><path d="M21.3 .9h5.4l-1.2 4.3h-3z" fill="#39424e"/><path d="M22.9 1.7h2.2l-.5 2h-1.2z" fill="#ffb347"/></g><g transform="rotate(180 24 24)"><path d="M21.3 .9h5.4l-1.2 4.3h-3z" fill="#39424e"/><path d="M22.9 1.7h2.2l-.5 2h-1.2z" fill="#ffb347"/></g><g transform="rotate(240 24 24)"><path d="M21.3 .9h5.4l-1.2 4.3h-3z" fill="#39424e"/><path d="M22.9 1.7h2.2l-.5 2h-1.2z" fill="#ffb347"/></g><g transform="rotate(300 24 24)"><path d="M21.3 .9h5.4l-1.2 4.3h-3z" fill="#39424e"/><path d="M22.9 1.7h2.2l-.5 2h-1.2z" fill="#ffb347"/></g>
+  <circle cx="24" cy="24" r="13.4" fill="url(#lgw)" stroke="#1b2430" stroke-width=".9"/>
+  <g class="gate-waves" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1">
+    <path d="M16.5 21.5q3.5-3 7.5 0t7.5 0" opacity=".75"/><path d="M17.5 26.5q3.2 2.6 6.5 0t6.5 0" opacity=".5"/><path d="M21 31q3 1.6 6 0" opacity=".4"/>
+  </g>
+</svg>`;
 
 export const FOLDER_SVG = `<svg viewBox="0 0 48 48" class="ico-svg" aria-hidden="true">
   <path d="M4 10a3 3 0 0 1 3-3h11l4 4h19a3 3 0 0 1 3 3v3H4z" fill="#e8a822"/>

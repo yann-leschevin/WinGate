@@ -16,7 +16,7 @@ import app as winweb  # noqa: E402
 import dbsql  # noqa: E402
 import web_proxy  # noqa: E402
 
-H = {"X-WinWeb": "1"}
+H = {"X-WinGate": "1"}
 
 
 class ProxyTests(unittest.TestCase):

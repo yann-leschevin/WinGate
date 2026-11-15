@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Connexion — WinGate</title>
+</head>
+<body style="font:15px system-ui,sans-serif;padding:24px;color:#222">
+<p id="m">Connexion en cours…</p>
+<script>
+// Retour de connexion Google / Microsoft : transmet le résultat à la fenêtre
+// WinGate (même site) puis se ferme. Rien n'est envoyé au serveur.
+(function () {
+  var p = {};
+  [location.search, location.hash].forEach(function (s) {
+    new URLSearchParams(s.replace(/^[?#]/, '')).forEach(function (v, k) { p[k] = v; });
+  });
+  // On retire aussitôt le jeton / le code de l'adresse et de l'historique
+  try { history.replaceState(null, '', location.pathname); } catch (e) {}
+  var msg = JSON.stringify({ type: 'wingate-oauth', params: p, t: Date.now() });
+  try { var c = new BroadcastChannel('wingate-oauth'); c.postMessage(msg); c.close(); } catch (e) {}
+  try { localStorage.setItem('wingate-oauth', msg); } catch (e) {}
+  try { if (window.opener) window.opener.postMessage(msg, location.origin); } catch (e) {}
+  document.getElementById('m').textContent = p.error
+    ? 'Connexion annulée. Vous pouvez fermer cette fenêtre.'
+    : 'Connexion réussie : vous pouvez fermer cette fenêtre et revenir à WinGate.';
+  setTimeout(function () { window.close(); }, 400);
+})();
+</script>
+</body>
+</html>

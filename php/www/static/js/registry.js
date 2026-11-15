@@ -20,7 +20,7 @@ export function getApps({ includeHidden = false } = {}) {
     .sort((a, b) => a.name.localeCompare(b.name, 'fr'));
 }
 
-export const PINNED = ['explorer', 'browser', 'notepad', 'editorpp', 'writer', 'sheet', 'calculator', 'cmd', 'settings', 'taskmgr'];
+export const PINNED = ['explorer', 'cloud', 'browser', 'notepad', 'editorpp', 'writer', 'sheet', 'calculator', 'cmd', 'settings', 'taskmgr'];
 
 export function launchApp(id, args = {}) {
   const app = apps.get(id);

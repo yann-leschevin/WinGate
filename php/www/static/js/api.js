@@ -55,7 +55,7 @@ export const api = {
     try {
       resp = await fetch(u.href, { mode: 'cors', credentials: 'omit', referrerPolicy: 'no-referrer' });
     } catch {
-      throw new fs.FsError('Ce site n\'autorise pas le téléchargement depuis WinWeb : utilisez « Ouvrir dans le navigateur de l\'ordinateur ».');
+      throw new fs.FsError('Ce site n\'autorise pas le téléchargement depuis WinGate : utilisez « Ouvrir dans le navigateur de l\'ordinateur ».');
     }
     if (!resp.ok) throw new fs.FsError(`Le site a répondu : erreur ${resp.status}`);
     const blob = await resp.blob();

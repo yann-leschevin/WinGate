@@ -386,3 +386,20 @@
 .br-list-title { color: var(--accent); text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; user-select: text; }
 .br-list-title:hover { text-decoration: underline; }
 .br-list-url { color: var(--text-2); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 280px; }
+
+/* ---------- Téléphone ---------- */
+@media (max-width: 640px) {
+  /* Ruban : onglets sur une ligne défilante (plus de « Mise en page » sur trois lignes) */
+  .rb-tabs { overflow-x: auto; scrollbar-width: none; }
+  .rb-tabs::-webkit-scrollbar { display: none; }
+  .rb-tab { flex: none; white-space: nowrap; padding: 9px 12px 10px; }
+  .rb-tab.rb-file { padding: 7px 12px; }
+  .rb-body { -webkit-overflow-scrolling: touch; }
+  .ss-name { width: 64px; }
+  .ss-name, .ss-fx { height: 34px; }
+  .ss-tab { padding: 9px 16px; }
+}
+/* Écran tactile : poignée de largeur de colonne plus facile à saisir */
+@media (hover: none), (pointer: coarse) {
+  .ss-resize { right: -8px; width: 16px; }
+}

@@ -27,7 +27,7 @@ const PLACES = [
 
 const TYPE_NAMES = {
   txt: 'Document texte', md: 'Document Markdown', json: 'Fichier JSON', html: 'Page HTML', htm: 'Page HTML',
-  js: 'Script JavaScript', wapp: 'Application WinWeb', exe: 'Application Windows', dll: 'Bibliothèque Windows',
+  js: 'Script JavaScript', wapp: 'Application WinGate', exe: 'Application Windows', dll: 'Bibliothèque Windows',
   png: 'Image PNG', jpg: 'Image JPEG', jpeg: 'Image JPEG', gif: 'Image GIF', svg: 'Image SVG', webp: 'Image WebP',
   zip: 'Archive ZIP', pdf: 'Document PDF', css: 'Feuille de style', py: 'Script Python', csv: 'Fichier CSV',
   wdoc: 'Document de traitement de texte', wcalc: 'Classeur', wpres: 'Présentation', wdb: 'Base de données',

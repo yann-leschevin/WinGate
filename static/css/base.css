@@ -115,9 +115,15 @@ input, textarea, [contenteditable="true"] { user-select: text; }
   background: #000; color: #fff;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 56px;
 }
-.boot-logo { display: grid; grid-template-columns: repeat(2, 54px); gap: 5px; animation: boot-fade 1s ease both; }
-.boot-logo span { width: 54px; height: 54px; background: linear-gradient(135deg, #3fb1ff, #0a6cff); }
-.style-win10 .boot-logo span { background: #1e90ff; }
+.boot-logo { width: 132px; height: 132px; animation: boot-fade 1s ease both; filter: drop-shadow(0 0 22px rgba(60, 150, 255, .55)); }
+.boot-logo svg { display: block; width: 100%; height: 100%; }
+/* Anneau de métal : la couronne tourne, le « passage » ondule (aussi dans la barre des tâches) */
+.gate-logo .gate-ring { transform-box: view-box; transform-origin: 50% 50%; animation: gate-spin 14s linear infinite; }
+.gate-logo .gate-waves { transform-box: view-box; transform-origin: 50% 50%; animation: gate-ripple 2.6s ease-in-out infinite; }
+.boot-logo .gate-ring { animation-duration: 3.2s; }
+@keyframes gate-spin { to { transform: rotate(360deg); } }
+@keyframes gate-ripple { 0%, 100% { opacity: .45; transform: scale(.94); } 50% { opacity: 1; transform: scale(1.04); } }
+@media (prefers-reduced-motion: reduce) { .gate-logo .gate-ring, .gate-logo .gate-waves { animation: none; } }
 .boot-spinner { position: relative; width: 40px; height: 40px; }
 .boot-spinner i {
   position: absolute; left: 50%; top: 0; width: 5px; height: 5px; margin-left: -2.5px;
