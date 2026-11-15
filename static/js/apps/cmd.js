@@ -107,8 +107,8 @@ function launch({ cwd = '/Documents' } = {}) {
     help: async () => {
       HELP.forEach(([c, d]) => print(`${c.padEnd(12)} ${d}`));
     },
-    ver: async () => print('WinWeb [version 1.0.2026] — invite de commandes simulée'),
-    whoami: async () => print('winweb\\utilisateur'),
+    ver: async () => print('WinGate [version 1.0.2026] — invite de commandes simulée'),
+    whoami: async () => print('wingate\\utilisateur'),
     date: async () => print(`La date du jour est : ${new Date().toLocaleDateString('fr-FR')}`),
     time: async () => print(`L'heure actuelle est : ${new Date().toLocaleTimeString('fr-FR')}`),
     cls: async () => output.replaceChildren(),
@@ -252,7 +252,7 @@ function launch({ cwd = '/Documents' } = {}) {
       }
       const app = getApps().find((a) => a.id === name.toLowerCase() || a.name.toLowerCase() === name.toLowerCase());
       if (app) launchApp(app.id);
-      else throw new Error(`WinWeb ne trouve pas « ${name} ». Vérifiez que vous avez tapé le nom correctement.`);
+      else throw new Error(`WinGate ne trouve pas « ${name} ». Vérifiez que vous avez tapé le nom correctement.`);
     },
   };
   Object.assign(commands, {
@@ -331,7 +331,7 @@ function launch({ cwd = '/Documents' } = {}) {
     if (!window.getSelection()?.toString()) input.focus();
   });
 
-  print('WinWeb [version 1.0.2026]');
+  print('WinGate [version 1.0.2026]');
   print('Invite de commandes simulée. Tapez HELP pour la liste des commandes.');
   print('');
   updatePrompt();

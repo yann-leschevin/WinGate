@@ -1,4 +1,4 @@
-"""WinWeb — un bureau de type Windows 11 dans le navigateur.
+"""WinGate — un bureau de type Windows 11 dans le navigateur.
 
 Lancement :  python3 app.py            (http://127.0.0.1:5000)
 Options   :  --host 127.0.0.1 --port 5000 --debug
@@ -58,8 +58,8 @@ def require_custom_header():
     # Les requêtes modifiantes doivent porter un en-tête personnalisé : un site
     # tiers ne peut pas l'ajouter sans pré-vol CORS (refusé), ce qui bloque le CSRF.
     if request.path.startswith("/api/") and request.method not in ("GET", "HEAD", "OPTIONS"):
-        if request.headers.get("X-WinWeb") != "1":
-            return jsonify(error="En-tête X-WinWeb manquant"), 403
+        if request.headers.get("X-WinGate") != "1":
+            return jsonify(error="En-tête X-WinGate manquant"), 403
     return None
 
 
@@ -286,7 +286,7 @@ def web_page():
     resp = app.response_class(data, status=status, mimetype=None, content_type=ctype)
     resp.headers["Content-Security-Policy"] = WEB_CSP
     resp.headers["Cache-Control"] = "no-store"
-    resp.headers["X-WinWeb-Url"] = final.encode("ascii", "ignore").decode("ascii")
+    resp.headers["X-WinGate-Url"] = final.encode("ascii", "ignore").decode("ascii")
     return resp
 
 
@@ -347,12 +347,12 @@ def api_not_found(_rest):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="WinWeb — bureau Windows dans le navigateur")
+    parser = argparse.ArgumentParser(description="WinGate — bureau Windows dans le navigateur")
     parser.add_argument("--host", default="127.0.0.1", help="adresse d'écoute (défaut : 127.0.0.1)")
     parser.add_argument("--port", type=int, default=5000, help="port (défaut : 5000)")
     parser.add_argument("--debug", action="store_true", help="mode débogage Flask")
     args = parser.parse_args()
-    print(" * WinWeb disponible sur http://%s:%d" % (args.host, args.port))
+    print(" * WinGate disponible sur http://%s:%d" % (args.host, args.port))
     app.run(host=args.host, port=args.port, debug=args.debug, threaded=True)
 
 

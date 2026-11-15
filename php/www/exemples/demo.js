@@ -1,4 +1,4 @@
-// Exemple de script .js pour WinWeb : il s'exécute dans une iframe sandboxée
+// Exemple de script .js pour WinGate : il s'exécute dans une iframe sandboxée
 // et sa sortie console.log / warn / error s'affiche dans la fenêtre console.
 
 console.log('Bonjour depuis un script JavaScript sandboxé !');
@@ -29,7 +29,7 @@ try {
 try {
   console.log('Accès au DOM parent :', parent.document.title);
 } catch (err) {
-  console.warn('Accès au DOM de WinWeb refusé :', err.name);
+  console.warn('Accès au DOM de WinGate refusé :', err.name);
 }
 
 // Tâches asynchrones : elles continuent après la fin du script principal.

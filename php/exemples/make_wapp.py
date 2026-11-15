@@ -25,7 +25,7 @@ HORLOGE = {
         "width": 420,
         "height": 520,
         "version": "1.0",
-        "author": "WinWeb",
+        "author": "WinGate",
         "description": "Horloge analogique, heure numérique et chronomètre.",
     }, ensure_ascii=False, indent=2),
     "icon.svg": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
@@ -159,7 +159,7 @@ button:hover { background: #2563eb; }
     running = false; elapsed = 0; clearInterval(timer); startBtn.textContent = 'Démarrer'; lapsEl.innerHTML = ''; tick();
   };
 
-  // Facultatif : demande à WinWeb de mettre à jour le titre de la fenêtre.
+  // Facultatif : demande à WinGate de mettre à jour le titre de la fenêtre.
   setInterval(function () {
     parent.postMessage({ type: 'winweb:setTitle', title: 'Horloge — ' + new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) }, '*');
   }, 1000);
@@ -175,7 +175,7 @@ SERPENT = {
         "width": 460,
         "height": 540,
         "version": "1.0",
-        "author": "WinWeb",
+        "author": "WinGate",
         "description": "Le jeu du serpent : flèches ou ZQSD pour diriger, Espace pour la pause.",
     }, ensure_ascii=False, indent=2),
     "index.html": """<!DOCTYPE html>

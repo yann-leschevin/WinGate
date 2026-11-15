@@ -23,11 +23,12 @@
 .style-win10 .tb-btn { height: 100%; min-width: 48px; }
 .style-win10 .tb-btn:hover { background: rgba(255, 255, 255, .1); }
 
-.tb-start .logo-svg { width: 24px; height: 24px; fill: #0a84ff; transition: transform .15s; }
-.theme-dark .tb-start .logo-svg { fill: #5ab8ff; }
+.tb-start .logo-svg { width: 32px; height: 32px; transition: transform .15s, filter .2s; }
 .tb-start:active .logo-svg { transform: scale(.85); }
-.style-win10 .tb-start .logo-svg { fill: currentColor; width: 18px; height: 18px; }
-.style-win10 .tb-start:hover .logo-svg, .style-win10 .tb-start.open .logo-svg { fill: #3ba0ff; }
+.style-win10 .tb-start .logo-svg { width: 28px; height: 28px; }
+/* Survol ou menu ouvert : l'anneau accélère et le passage s'illumine */
+.tb-start:hover .gate-ring, .tb-start.open .gate-ring { animation-duration: 2.4s; }
+.tb-start:hover .logo-svg, .tb-start.open .logo-svg { filter: drop-shadow(0 0 5px rgba(70, 160, 255, .9)); }
 
 .tb-search { width: 180px; justify-content: flex-start; border-radius: 20px; background: var(--hover); border: 1px solid var(--border); height: 34px; margin: 0 6px; }
 .tb-search-ico { font-size: 14px; }

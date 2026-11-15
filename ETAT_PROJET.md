@@ -1,4 +1,4 @@
-# État du projet — Clone Windows (WinWeb)
+# État du projet — Clone Windows (WinGate, anciennement WinWeb)
 
 ## Objectif
 OS de type Windows 11 (thème Windows 10 sélectionnable) dans le navigateur.
@@ -100,3 +100,14 @@ Application complète (phase 2 terminée le 2026-10-09). Lancement : `python3 ap
 - Pagination réelle du traitement de texte ; formules matricielles et mise en forme conditionnelle du tableur.
 - Navigateur : relayer aussi les formulaires POST via le mandataire.
 - Renommage « en place » des icônes (actuellement via une boîte de dialogue).
+
+## Phase (2026-11-15) — renommage WinWeb → WinGate
+- [x] Nom affiché « WinGate » partout (page, dialogues, invite de commandes, navigateur, README…) ;
+      nouveau logo original (anneau de métal animé) à la place des quatre carreaux trop proches de Windows.
+- [x] En-tête anti-CSRF renommé `X-WinGate` (serveur, `api.js`, tests).
+- [x] Inchangés exprès : identifiants techniques en minuscules (`winweb-doc`, `winweb:setTitle`,
+      clés `winweb.*`…) pour rester compatible avec les fichiers et applications `.wapp` existants.
+- [x] Dossier `php/` resynchronisé avec la version en ligne (https://leschevin.com/projets/wingate/),
+      qui ajoute « Stockage en ligne » (Google Drive, OneDrive, iCloud via l'appareil).
+- [x] Dossier local et dépôt GitHub renommés `WinGate`.
+

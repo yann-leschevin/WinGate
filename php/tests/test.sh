@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Tests locaux de WinWeb (version en ligne, stockage dans le navigateur).
+# Tests locaux de WinGate (version en ligne, stockage dans le navigateur).
 #  1) pages et fichiers servis par PHP (curl) ;
 #  2) API du navigateur (IndexedDB, SQLite, .wapp, PE, service worker) exécutée
 #     dans Firefox sans fenêtre, si Firefox est installé.
@@ -19,7 +19,7 @@ OK=0; KO=0
 check() { if eval "$2" >/dev/null 2>&1; then echo "  OK  $1"; OK=$((OK+1)); else echo "  KO  $1"; KO=$((KO+1)); fi; }
 code() { curl -s --max-time 10 -o /dev/null -w '%{http_code}' "$@"; }
 body() { curl -s --max-time 10 "$@"; }
-echo "WinWeb — serveur"
+echo "WinGate — serveur"
 check "page d'accueil 200"               '[ "$(code $BASE/)" = 200 ]'
 check "plus de syntaxe Jinja"            '! body $BASE/ | grep -q "{{"'
 check "chemins relatifs (static/)"       'body $BASE/ | grep -q "src=\"static/js/main.js\""'
@@ -31,8 +31,8 @@ for f in $(find www/static/js www/sw.js -name '*.js'); do
   check "syntaxe $(basename $f)"         "node --check $f"
 done
 if command -v firefox >/dev/null; then
-  echo "WinWeb — navigateur (Firefox sans fenêtre)"
-  PROF="$HOME/snap/firefox/common/winweb-test"; [ -d "$HOME/snap/firefox" ] || PROF="$TMP/profil"
+  echo "WinGate — navigateur (Firefox sans fenêtre)"
+  PROF="$HOME/snap/firefox/common/wingate-test"; [ -d "$HOME/snap/firefox" ] || PROF="$TMP/profil"
   rm -rf "$PROF"; mkdir -p "$PROF"
   timeout 120 firefox --headless --no-remote --profile "$PROF" --screenshot "$PROF/x.png" "$BASE/tests/runner.html" >/dev/null 2>&1
   rm -rf "$PROF"

@@ -1,6 +1,9 @@
-# WinWeb
+# WinGate
 
-> 🌐 **Essayer en ligne : <https://leschevin.com/projets/winweb/>**
+> Anciennement **WinWeb** : projet renommé en **WinGate** (nouveau logo : un anneau de métal qui tourne
+> autour d'un passage lumineux). L'ancienne adresse du dépôt GitHub redirige automatiquement.
+
+> 🌐 **Essayer en ligne : <https://leschevin.com/projets/wingate/>**
 >
 > 🤝 **Version PHP et mise en ligne réalisées par Yann Leschevin ([@yann-leschevin](https://github.com/yann-leschevin)) en collaboration avec Claude (Anthropic), via [Claude Code](https://claude.com/claude-code)** — novembre 2026.
 
@@ -11,13 +14,13 @@ Ce dépôt contient **deux versions** du projet :
 | Partie | Dossier | Rôle | Lancer en local |
 |--------|---------|------|-----------------|
 | 🐍 **Python** (Flask) | racine du dépôt | version d'origine, à lancer sur son ordinateur | `python3 app.py` puis http://127.0.0.1:5000 |
-| 🐘 **PHP** | [`php/`](php/) | version publiée sur [leschevin.com](https://leschevin.com/projets/winweb/) (hébergement OVH) | `cd php && php -S 127.0.0.1:8080 -t www` |
+| 🐘 **PHP** | [`php/`](php/) | version publiée sur [leschevin.com](https://leschevin.com/projets/wingate/) (hébergement OVH) | `cd php && php -S 127.0.0.1:8080 -t www` |
 
 ---
 
 ## 🐘 Partie PHP — version en ligne
 
-👉 <https://leschevin.com/projets/winweb/> · documentation détaillée : [`php/README.md`](php/README.md)
+👉 <https://leschevin.com/projets/wingate/> · documentation détaillée : [`php/README.md`](php/README.md)
 
 La version en ligne n'a **pas de serveur de fichiers** : chaque visiteur a son propre PC virtuel,
 enregistré dans **son navigateur** (IndexedDB). Rien n'est envoyé ni stocké sur l'hébergement.
@@ -30,7 +33,7 @@ enregistré dans **son navigateur** (IndexedDB). Rien n'est envoyé ni stocké s
 
 Tests : `bash php/tests/test.sh` (77 vérifications, dont l'API complète exécutée dans Firefox sans fenêtre).
 
-Le dossier `php/www/` est exactement ce qui est envoyé sur l'hébergement (dans `www/projets/winweb/`).
+Le dossier `php/www/` est exactement ce qui est envoyé sur l'hébergement (dans `www/projets/wingate/`).
 
 ---
 
@@ -39,13 +42,13 @@ Le dossier `php/www/` est exactement ce qui est envoyé sur l'hébergement (dans
 Le code Python n'a pas été modifié par le portage : il reste à la racine du dépôt.
 Sa documentation d'origine suit.
 
-### WinWeb — un bureau Windows 11 / Windows 10 dans le navigateur
+### WinGate — un bureau Windows 11 / Windows 10 dans le navigateur
 
-> 🤖 **Projet développé par une IA** : le code, les tests et la documentation de WinWeb ont été écrits par
+> 🤖 **Projet développé par une IA** : le code, les tests et la documentation de WinGate ont été écrits par
 > **Claude** (Anthropic), via **Claude Code**, à partir des demandes de Yann Leschevin.
 > Voir [Crédits](#crédits).
 
-WinWeb reproduit un système d'exploitation de type Windows 11 (thème Windows 10
+WinGate reproduit un système d'exploitation de type Windows 11 (thème Windows 10
 sélectionnable) dans une page web. Le serveur est en **Python + Flask** (bibliothèque
 standard uniquement en plus de Flask). L'interface est faite en **HTML, CSS et
 JavaScript natifs** (modules ES), sans framework, sans Node.js et sans CDN.
@@ -148,7 +151,7 @@ et indique la destination. Les fichiers sont envoyés au serveur et apparaissent
 - **dans un dossier**, si vous les déposez dans une fenêtre de l'Explorateur, sur une icône de dossier
   ou sur un raccourci de la barre latérale.
 
-Le glisser-déposer fonctionne aussi entre les fenêtres de WinWeb : bureau ↔ explorateur ↔ dossiers ↔
+Le glisser-déposer fonctionne aussi entre les fenêtres de WinGate : bureau ↔ explorateur ↔ dossiers ↔
 corbeille. Maintenez Ctrl pour copier au lieu de déplacer.
 
 ##### Exemples prêts à déposer (`exemples/`)
@@ -163,10 +166,10 @@ corbeille. Maintenez Ctrl pour copier au lieu de déplacer.
 
 #### Formats « exécutables »
 
-Un navigateur ne peut pas exécuter de binaires natifs. WinWeb définit donc ses propres formats.
+Un navigateur ne peut pas exécuter de binaires natifs. WinGate définit donc ses propres formats.
 Un double-clic lance le fichier avec l'application associée (voir *Paramètres → Applications par défaut*).
 
-##### `.wapp` — application WinWeb
+##### `.wapp` — application WinGate
 
 Archive **zip** contenant à sa racine (ou dans un unique sous-dossier) :
 
@@ -222,9 +225,9 @@ configuration (`py ts mjs json xml css c cpp java sql sh bat ini yml…`) → É
 
 La plupart des sites interdisent l'affichage dans une iframe. En mode **Protégé** (par défaut), le serveur
 récupère la page (`GET /web?url=…`, module `web_proxy.py`, bibliothèque standard), y ajoute une balise `<base>`
-et un petit script qui renvoie les clics de liens et les formulaires GET au navigateur WinWeb, puis la sert avec
+et un petit script qui renvoie les clics de liens et les formulaires GET au navigateur WinGate, puis la sert avec
 `Content-Security-Policy: sandbox allow-scripts allow-forms` dans une iframe **sans** `allow-same-origin` :
-la page tourne dans une origine opaque et n'a aucun accès à WinWeb. Les sites statiques ou peu dynamiques
+la page tourne dans une origine opaque et n'a aucun accès à WinGate. Les sites statiques ou peu dynamiques
 (Wikipédia, DuckDuckGo, Hacker News, documentation…) fonctionnent bien ; les applications web complexes
 (connexion, paiement, sites très JavaScript) peuvent mal fonctionner : utilisez alors le mode **Direct**
 (chargement direct de l'iframe, souvent refusé par les sites) ou « Ouvrir dans le navigateur de l'ordinateur ».
@@ -242,7 +245,7 @@ connexion (y compris après chaque redirection), ce qui empêche d'atteindre `12
 - **Uploads** limités par `MAX_CONTENT_LENGTH`, qui renvoie une erreur 413. Le client vérifie aussi la taille avant l'envoi.
 - **Contenus utilisateur** servis avec `Content-Security-Policy: sandbox allow-scripts` et `nosniff` :
   même ouverts directement dans un onglet, ils restent dans une origine opaque, sans accès à l'API.
-- **CSRF** : les requêtes modifiantes exigent l'en-tête `X-WinWeb: 1`, qu'un site tiers ne peut pas ajouter
+- **CSRF** : les requêtes modifiantes exigent l'en-tête `X-WinGate: 1`, qu'un site tiers ne peut pas ajouter
   sans pré-vol CORS. Le serveur n'autorise aucune requête CORS.
 - **Documents riches** (traitement de texte, diapositives, notes, collage) : le HTML est analysé dans un
   document inerte (`DOMParser`) puis reconstruit avec une liste blanche de balises, d'attributs et de styles
@@ -299,7 +302,7 @@ Tests : `python3 -m unittest discover -s tests`.
   vers leur propre domaine, redirections par `location.href`) s'affichent mal en mode Protégé ; les formulaires
   POST partent directement vers le site. Les liens des moteurs DuckDuckGo et Google sont « déroulés »
   automatiquement.
-- Bureautique : formats propres à WinWeb (JSON / SQLite), pas de lecture ni d'écriture `.docx`, `.xlsx`,
+- Bureautique : formats propres à WinGate (JSON / SQLite), pas de lecture ni d'écriture `.docx`, `.xlsx`,
   `.pptx` ; la mise en page du traitement de texte est continue (repères de page, pas de vraie pagination).
 - Serveur de développement Flask : il convient à un usage local, pas à une exposition sur Internet.
 

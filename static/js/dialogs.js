@@ -11,7 +11,7 @@ function dialogWindow({ title, icon = 'ℹ️', width = 420, height = 200, conte
   });
 }
 
-export function alertDialog(message, { title = 'WinWeb', icon = 'ℹ️' } = {}) {
+export function alertDialog(message, { title = 'WinGate', icon = 'ℹ️' } = {}) {
   return new Promise((resolve) => {
     const ok = h('button', { class: 'btn primary', type: 'button', text: 'OK' });
     const content = h('div', { class: 'dialog' },
@@ -44,7 +44,7 @@ export function confirmDialog(message, { title = 'Confirmation', icon = '❓', o
 }
 
 /** Choix parmi 3 boutons (ex. Enregistrer / Ne pas enregistrer / Annuler). Retourne l'index ou -1. */
-export function choiceDialog(message, labels, { title = 'WinWeb', icon = '❓' } = {}) {
+export function choiceDialog(message, labels, { title = 'WinGate', icon = '❓' } = {}) {
   return new Promise((resolve) => {
     let result = -1;
     const buttons = labels.map((label, i) => h('button', {
@@ -61,7 +61,7 @@ export function choiceDialog(message, labels, { title = 'WinWeb', icon = '❓' }
   });
 }
 
-export function promptDialog(message, value = '', { title = 'WinWeb', icon = '✏️', okLabel = 'OK', selectStem = false } = {}) {
+export function promptDialog(message, value = '', { title = 'WinGate', icon = '✏️', okLabel = 'OK', selectStem = false } = {}) {
   return new Promise((resolve) => {
     let result = null;
     const input = h('input', { class: 'input', type: 'text', value, spellcheck: 'false' });

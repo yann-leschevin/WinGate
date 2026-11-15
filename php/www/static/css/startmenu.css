@@ -96,3 +96,13 @@
   .sm-body { padding: 4px 12px 12px; }
   .sm-grid { grid-template-columns: repeat(4, 1fr); }
 }
+
+/* Téléphone : pied du menu sans débordement (icônes d'alimentation seules) */
+@media (max-width: 640px) {
+  .sm-footer { padding: 0 8px; gap: 4px; }
+  .sm-user { min-width: 0; flex: 1 1 auto; }
+  .sm-user > :last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .sm-power-group { flex: none; }
+  .sm-power { padding: 10px 12px; font-size: 18px; }
+  .sm-power-label { display: none; }
+}

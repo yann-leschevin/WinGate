@@ -1,5 +1,5 @@
 // Accès à l'API REST Flask du système de fichiers virtuel.
-const HEADERS = { 'X-WinWeb': '1' };
+const HEADERS = { 'X-WinGate': '1' };
 
 async function request(method, url, payload) {
   const options = { method, headers: { ...HEADERS } };
@@ -60,7 +60,7 @@ export const api = {
       }
       const xhr = new XMLHttpRequest();
       xhr.open('POST', '/api/fs/upload');
-      xhr.setRequestHeader('X-WinWeb', '1');
+      xhr.setRequestHeader('X-WinGate', '1');
       xhr.upload.onprogress = (e) => {
         if (e.lengthComputable && onProgress) onProgress(e.loaded / e.total);
       };

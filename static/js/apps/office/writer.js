@@ -321,7 +321,7 @@ function launch({ path = null } = {}) {
         {
           label: 'Illustrations',
           items: [
-            rbBtn('🖼️<br>Image', 'Image du dossier Images (WinWeb)', () => insertImage('vfs'), { big: true }),
+            rbBtn('🖼️<br>Image', 'Image du dossier Images (WinGate)', () => insertImage('vfs'), { big: true }),
             rbBtn('💻<br>Depuis l\'ordinateur', 'Image de votre ordinateur', () => insertImage('local'), { big: true }),
           ],
         },

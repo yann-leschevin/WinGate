@@ -85,7 +85,7 @@ function persoPage(rerender) {
 
 function systemPage() {
   const rows = [
-    ['Système d\'exploitation', 'WinWeb 1.0 (simulation dans le navigateur)'],
+    ['Système d\'exploitation', 'WinGate 1.0 (simulation dans le navigateur)'],
     ['Style', getSettings().style === 'win10' ? 'Classique' : 'Moderne'],
     ['Navigateur', navigator.userAgent],
     ['Résolution', `${window.screen.width} × ${window.screen.height} (zone : ${window.innerWidth} × ${window.innerHeight})`],

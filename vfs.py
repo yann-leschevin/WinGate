@@ -26,7 +26,7 @@ INVALID_NAME_CHARS = set('<>:"/\\|?*')
 MAX_NAME_LEN = 255
 MAX_TEXT_READ = 5 * 1024 * 1024
 
-WELCOME_TEXT = """Bienvenue dans WinWeb !
+WELCOME_TEXT = """Bienvenue dans WinGate !
 
 Quelques idées pour commencer :
 - Glissez-déposez des fichiers depuis votre ordinateur dans la fenêtre du navigateur.

@@ -1,6 +1,7 @@
 // Point d'entrée : enregistre les applications et démarre la session.
 import browser from './apps/browser.js';
 import calculator from './apps/calculator.js';
+import cloud from './apps/cloud.js';
 import cmd from './apps/cmd.js';
 import editorpp from './apps/codeEditor.js';
 import exeInfo from './apps/exeInfo.js';
@@ -40,6 +41,10 @@ async function startServiceWorker() {
   try {
     const root = new URL('../../', import.meta.url);
     await navigator.serviceWorker.register(new URL('sw.js', root), { scope: root.pathname });
+    // Ancien nom (…/winweb/) : son service worker ne sert plus à rien
+    navigator.serviceWorker.getRegistrations().then((regs) => regs
+      .filter((r) => new URL(r.scope).pathname.endsWith('/winweb/') && r.scope !== root.href)
+      .forEach((r) => r.unregister())).catch(() => {});
     if (navigator.serviceWorker.controller) return true;
     await Promise.race([
       new Promise((resolve) => navigator.serviceWorker.addEventListener('controllerchange', resolve, { once: true })),
@@ -58,7 +63,7 @@ const [swOk, fsError] = await Promise.all([
 [
   explorer, notepad, calculator, settingsApp, taskmgr, imageViewer, cmd,
   htmlApp, wappApp, jsApp, exeInfo, propertiesApp, openWithApp, downloadApp,
-  browser, editorpp, writer, sheet, slides, database, notes,
+  browser, editorpp, writer, sheet, slides, database, notes, cloud,
 ].forEach(registerApp);
 
 applySettings();
@@ -71,7 +76,7 @@ initSession();
 initDesktop();
 boot();
 
-// Un autre onglet de WinWeb a modifié les fichiers : on rafraîchit l'affichage
+// Un autre onglet de WinGate a modifié les fichiers : on rafraîchit l'affichage
 onExternalChange(() => fsChanged(['/', '/Bureau']));
 
 if (fsError) {

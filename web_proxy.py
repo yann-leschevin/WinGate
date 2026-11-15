@@ -3,7 +3,7 @@
 La plupart des sites refusent d'être affichés dans une iframe (X-Frame-Options,
 CSP frame-ancestors). Le serveur récupère donc la page lui-même, y ajoute une
 balise ``<base>`` et un petit script qui renvoie les clics de liens au
-navigateur WinWeb, puis la sert avec ``Content-Security-Policy: sandbox`` :
+navigateur WinGate, puis la sert avec ``Content-Security-Policy: sandbox`` :
 la page s'exécute dans une origine opaque, sans accès à l'API.
 
 Protection SSRF : seules les adresses IP publiques (``is_global``) sont
@@ -25,7 +25,7 @@ MAX_BYTES = 8 * 1024 * 1024
 TIMEOUT = 12
 MAX_REDIRECTS = 6
 USER_AGENT = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-              "(KHTML, like Gecko) Chrome/124.0 Safari/537.36 WinWeb/1.1")
+              "(KHTML, like Gecko) Chrome/124.0 Safari/537.36 WinGate/1.1")
 
 
 class ProxyError(Exception):
@@ -167,7 +167,7 @@ _TITLE = re.compile(r"<title[^>]*>(.*?)</title>", re.I | re.S)
 
 # Script injecté dans chaque page servie par le mandataire : il intercepte la
 # navigation (liens, formulaires GET, window.open) et la confie au navigateur
-# WinWeb parent par postMessage, pour que l'adresse et l'historique suivent.
+# WinGate parent par postMessage, pour que l'adresse et l'historique suivent.
 NAV_SCRIPT = """<script>(function(){
 // Origine opaque : cookies et stockage lèvent SecurityError. On fournit des
 // équivalents en mémoire pour que les scripts des sites ne plantent pas.

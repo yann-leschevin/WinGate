@@ -1,6 +1,6 @@
 // Système de fichiers virtuel stocké DANS LE NAVIGATEUR (IndexedDB).
 //
-// Version en ligne de WinWeb (leschevin.com) : chaque visiteur a son propre
+// Version en ligne de WinGate (leschevin.com) : chaque visiteur a son propre
 // « PC », conservé dans son navigateur. Rien n'est envoyé au serveur.
 // Portage fidèle de vfs.py (version Python/Flask) : mêmes chemins virtuels,
 // même corbeille, mêmes règles de noms et mêmes réponses que l'API REST.
@@ -24,7 +24,7 @@ const MAX_NAME_LEN = 255;
 const MAX_TEXT_READ = 5 * 1024 * 1024;
 export const MAX_UPLOAD_MB = 100;
 
-const WELCOME_TEXT = `Bienvenue dans WinWeb !
+const WELCOME_TEXT = `Bienvenue dans WinGate !
 
 Ce PC virtuel est enregistré dans VOTRE navigateur : vos fichiers ne sont
 envoyés nulle part et restent sur cet appareil (effacer les données du site

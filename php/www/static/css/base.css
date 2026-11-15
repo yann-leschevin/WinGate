@@ -115,9 +115,15 @@ input, textarea, [contenteditable="true"] { user-select: text; }
   background: #000; color: #fff;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 56px;
 }
-.boot-logo { display: grid; grid-template-columns: repeat(2, 54px); gap: 5px; animation: boot-fade 1s ease both; }
-.boot-logo span { width: 54px; height: 54px; background: linear-gradient(135deg, #3fb1ff, #0a6cff); }
-.style-win10 .boot-logo span { background: #1e90ff; }
+.boot-logo { width: 132px; height: 132px; animation: boot-fade 1s ease both; filter: drop-shadow(0 0 22px rgba(60, 150, 255, .55)); }
+.boot-logo svg { display: block; width: 100%; height: 100%; }
+/* Anneau de métal : la couronne tourne, le « passage » ondule (aussi dans la barre des tâches) */
+.gate-logo .gate-ring { transform-box: view-box; transform-origin: 50% 50%; animation: gate-spin 14s linear infinite; }
+.gate-logo .gate-waves { transform-box: view-box; transform-origin: 50% 50%; animation: gate-ripple 2.6s ease-in-out infinite; }
+.boot-logo .gate-ring { animation-duration: 3.2s; }
+@keyframes gate-spin { to { transform: rotate(360deg); } }
+@keyframes gate-ripple { 0%, 100% { opacity: .45; transform: scale(.94); } 50% { opacity: 1; transform: scale(1.04); } }
+@media (prefers-reduced-motion: reduce) { .gate-logo .gate-ring, .gate-logo .gate-waves { animation: none; } }
 .boot-spinner { position: relative; width: 40px; height: 40px; }
 .boot-spinner i {
   position: absolute; left: 50%; top: 0; width: 5px; height: 5px; margin-left: -2.5px;
@@ -185,7 +191,7 @@ input, textarea, [contenteditable="true"] { user-select: text; }
 .ctx-menu.subs-left .ctx-sub { left: auto; right: calc(100% - 4px); }
 .ctx-item { position: relative; display: flex; align-items: center; gap: 10px; height: 32px; padding: 0 10px; border-radius: var(--radius-sm); }
 .ctx-item:hover:not(.disabled) { background: var(--hover); }
-.ctx-item:hover > .ctx-sub { display: block; }
+.ctx-item:hover > .ctx-sub, .ctx-item.open > .ctx-sub { display: block; }
 .ctx-item.disabled { opacity: .4; }
 .ctx-item.checked .ctx-label::after { content: "  ✔"; color: var(--accent); }
 .ctx-icon { width: 18px; text-align: center; font-size: 14px; }
@@ -242,3 +248,27 @@ body.wm-busy { cursor: default; }
 .dialog-buttons { display: flex; justify-content: flex-end; gap: 8px; padding-top: 10px; }
 .dialog-buttons .btn { min-width: 96px; }
 .dialog-window .win-body { background: var(--surface-2); }
+
+/* ---------- Téléphone / écran tactile ---------- */
+body { -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; overscroll-behavior: none; }
+@media (hover: none), (pointer: coarse) {
+  /* cibles plus hautes au doigt */
+  .ctx-item { height: 42px; }
+  .ctx-menu { max-width: calc(100vw - 8px); max-height: calc(100vh - 8px); max-height: calc(100dvh - 8px); overflow-y: auto; }
+  /* Sous-menus dépliés sous leur ligne (pas de place à côté sur un téléphone) */
+  .ctx-item.has-sub { flex-wrap: wrap; height: auto; min-height: 42px; }
+  .ctx-item.has-sub:hover > .ctx-sub { display: none; }
+  .ctx-item.has-sub.open > .ctx-sub { display: block; }
+  .ctx-menu .ctx-sub { position: static; flex: 0 0 100%; min-width: 0; margin: 0 0 4px 22px; box-shadow: none; }
+  .ctx-item.has-sub.open > .ctx-hint { transform: rotate(90deg); }
+  .btn { min-height: 34px; }
+  .toast-close { padding: 6px 10px; font-size: 16px; }
+}
+@media (max-width: 640px) {
+  #toasts { left: 8px; right: 8px; }
+  .toast { width: auto; max-width: none; }
+  .dialog { padding: 14px 14px 12px; }
+  .dialog-buttons { flex-wrap: wrap; }
+  .dialog-buttons .btn { flex: 1 1 96px; min-height: 40px; }
+  .lock-hint { padding: 0 16px; text-align: center; }
+}

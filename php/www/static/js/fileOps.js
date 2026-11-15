@@ -195,6 +195,15 @@ export function entryMenuItems(entries, { onRename, extra = [] } = {}) {
     items.push({ label: 'Télécharger', icon: '⬇️', action: () => launchApp('download', { path: single.path }) });
   }
   items.push(...extra);
+  // Copie vers un stockage en ligne (pour retrouver les fichiers sur un autre appareil)
+  items.push({
+    label: 'Envoyer vers', icon: '☁️',
+    submenu: [
+      { label: 'Google Drive', action: () => launchApp('cloud', { provider: 'google', send: paths }) },
+      { label: 'OneDrive', action: () => launchApp('cloud', { provider: 'microsoft', send: paths }) },
+      { label: 'iCloud / cet appareil', action: () => launchApp('cloud', { provider: 'device', send: paths }) },
+    ],
+  });
   items.push(
     { separator: true },
     { label: 'Couper', icon: '✂️', hint: 'Ctrl+X', disabled: entries.some((e) => e.protected), action: () => copyToClipboard(paths, true) },
